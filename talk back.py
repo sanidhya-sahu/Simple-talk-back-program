@@ -1,18 +1,17 @@
 import os
-
 cmd = "pip install speechrecognition"
 os.system(cmd)
 import speech_recognition as s_r
 print(s_r.__version__)  # just to print the version not required
 r = s_r.Recognizer()
-my_mic = s_r.Microphone(device_index=1)  # my device index is 1, you have to put your device index
+my_mic = s_r.Microphone(device_index=1)  # my device index is 1, you have to put your device index works fine with 1.
 while (True):
     with my_mic as source:
         print("Say now!!!!")
         # r.adjust_for_ambient_noise(source)  # reduce noise
         audio = r.listen(source)  # take voice input from the microphone
         try:
-            x = r.recognize_google(audio)  # to print voice into text
+            x = r.recognize_google(audio)  # to convert voice into text and store in aa variable
         except:
             x = "unable to hear you"
     if x == "stop":
